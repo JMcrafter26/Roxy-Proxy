@@ -10,9 +10,9 @@ This application serves as a proxy for HLS streams, Images and enabling secure a
 1. Fork this repository to your GitHub account.
 2. Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens), select the `Edit Cloudflare Workers` template.
 3. Copy the API token.
-4. Go to [Secrets and variables > Actions](./settings/secrets/actions/new) in your forked repository.
+4. Go to `Settings > Secrets and variables > Actions` in your forked repository.
 5. Add a new secret with the name `CLOUDFLARE_API_TOKEN` and your Cloudflare API token as the value.
-6. Go to the [Actions](./actions) tab in your forked repository.
+6. Go to the `Actions` tab in your forked repository.
 7. Select the `Deploy` workflow from the left sidebar.
 8. Click the `Run workflow` button, you can enter a custom name for your worker in the input field.
 9. Click the green `Run workflow` button to start the deployment.
