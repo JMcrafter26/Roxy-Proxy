@@ -8,7 +8,7 @@ This application serves as a proxy for HLS streams, Images and enabling secure a
 - Enable github workflows
 - Run **`deploy`** workflow in your forked repo actions `https://github.com/[User-Name]/[Repo-Name]/actions/workflows/deploy.yml` .
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Toasty360/Roxy)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JMcrafter26/Roxy-Proxy)
 
 > [!TIP]
 > Dont' forget to run the workflow
