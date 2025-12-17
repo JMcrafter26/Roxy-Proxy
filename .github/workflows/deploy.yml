@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      worker_name:
+        description: 'Custom Cloudflare Worker name (leave empty to use default: roxyp_1)'
+        required: false
+        type: string
 
 jobs:
   upload:
@@ -22,4 +27,9 @@ jobs:
       - name: Deploy Worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: wrangler deploy
+        run: |
+          if [ -n "${{ inputs.worker_name }}" ]; then
+            wrangler deploy --name "${{ inputs.worker_name }}"
+          else
+            wrangler deploy
+          fi
