@@ -94,8 +94,14 @@ async function proxy(request) {
 
 		const contentType = response.headers.get('Content-Type') || '';
 
+		// Check for M3U8 content type first (before binary check)
+		// This is important because some M3U8 types like 'audio/mpegurl' contain 'audio/'
+		// which would incorrectly match the BINARY pattern
+		const isM3U8ContentType = matchesContentType(contentType, CONTENT_TYPES.M3U8);
+
 		// Direct stream for video, audio, and other binary content
-		if (matchesContentType(contentType, CONTENT_TYPES.BINARY)) {
+		// But NOT if it's an M3U8 file
+		if (!isM3U8ContentType && matchesContentType(contentType, CONTENT_TYPES.BINARY)) {
 			return new Response(response.body, {
 				status: response.status,
 				headers: responseHeaders,
@@ -105,7 +111,7 @@ async function proxy(request) {
 		// For M3U8 and text content
 		const responseContent = await response.text();
 		const contentLooksLikeM3U8 = responseContent.trimStart().startsWith('#EXTM3U');
-		const isM3U8 = contentLooksLikeM3U8 || matchesContentType(contentType, CONTENT_TYPES.M3U8);
+		const isM3U8 = contentLooksLikeM3U8 || isM3U8ContentType;
 
 		if (isM3U8) {
 			responseHeaders['Content-Type'] = CONTENT_TYPES.M3U8[0];
