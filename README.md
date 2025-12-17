@@ -2,17 +2,23 @@
 
 This application serves as a proxy for HLS streams, Images and enabling secure access to media content.
 
-### Deploy Using Cloudflare deploy button
+### Deploy Using Actions
 
-- Enter valid Cloudflare API key and Account ID.
-- Enable github workflows
-- Run **`deploy`** workflow in your forked repo actions `https://github.com/[User-Name]/[Repo-Name]/actions/workflows/deploy.yml` .
-- (Optional) When running the workflow manually, you can specify a custom worker name in the workflow inputs. If not specified, it defaults to `roxyp_1`.
+> [!tip]
+> This is a detailed guide, so it may look long, but it's quite simple to follow.
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JMcrafter26/Roxy-Proxy)
-
-> [!TIP]
-> Dont' forget to run the workflow
+1. Fork this repository to your GitHub account.
+2. Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens), select the `Edit Cloudflare Workers` template.
+3. Copy the API token.
+4. Go to [Secrets and variables > Actions](./settings/secrets/actions/new) in your forked repository.
+5. Add a new secret with the name `CLOUDFLARE_API_TOKEN` and your Cloudflare API token as the value.
+6. Go to the [Actions](./actions) tab in your forked repository.
+7. Select the `Deploy` workflow from the left sidebar.
+8. Click the `Run workflow` button, you can enter a custom name for your worker in the input field.
+9. Click the green `Run workflow` button to start the deployment.
+10. Wait for the workflow to complete, your worker will be deployed to your Cloudflare account.
+11. You can find the URL of your deployed worker in the workflow logs under the `Deploy Worker` step or in your Cloudflare dashboard.
+12. It will be in the format: `https://<your-worker-name>.<your-subdomain>.workers.dev`
 
 ### Deploy Manually
 
