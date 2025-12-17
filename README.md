@@ -7,6 +7,7 @@ This application serves as a proxy for HLS streams, Images and enabling secure a
 - Enter valid Cloudflare API key and Account ID.
 - Enable github workflows
 - Run **`deploy`** workflow in your forked repo actions `https://github.com/[User-Name]/[Repo-Name]/actions/workflows/deploy.yml` .
+- (Optional) When running the workflow manually, you can specify a custom worker name in the workflow inputs. If not specified, it defaults to `roxyp_1`.
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JMcrafter26/Roxy-Proxy)
 
